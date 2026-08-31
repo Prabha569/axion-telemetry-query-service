@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  telemetry-service
+  namespace: default
+  labels:
+    app:  telemetry-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telemetry-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  telemetry-service
+    spec:
+      - name:  telemetry-service
+        image:  acrprabha10.azurecr.io/telemetry:v1
+        ports:
+        - containerPort:  8000
+        
