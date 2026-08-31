@@ -20,8 +20,9 @@ spec:
       labels:
         app:  telemetry-service
     spec:
-      - name:  telemetry-service
-        image: acrprabha10.azurecr.io/telemetry:v1     
+      containers:
+      - name: telemetry-service
+        image: acrprabha10.azurecr.io/telemetry:v1  
         ports:
         - containerPort:  8000
         
